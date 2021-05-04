@@ -1,13 +1,12 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
+    <v-main class="signin-layout">
+      <v-container class="fill-height">
         <nuxt />
       </v-container>
     </v-main>
   </v-app>
 </template>
-
 <script>
 export default {};
 </script>
