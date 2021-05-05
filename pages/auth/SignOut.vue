@@ -5,8 +5,8 @@
 </template>
 <script>
 export default {
-  async AsyncData() {
-    $nuxt.$fire.$auth.signOut();
+  asyncData() {
+    $nuxt.$fire.auth.signOut();
   },
 };
 </script>
