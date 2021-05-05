@@ -105,7 +105,7 @@
         <v-card-subtitle
           :style="board.image.downloadURL != '' ? 'color:#fff' : ''"
         >
-          created {{ board.dateCreated | formatDate }}
+          created {{ board.dateCreated | formatDateWithMoments }}
         </v-card-subtitle>
       </v-card>
     </div>
