@@ -24,7 +24,9 @@
           </v-form>
         </v-card-text>
         <v-card-actions class="text-center">
-          <v-btn class="login-button" depressed large>Login</v-btn>
+          <v-btn class="login-button" depressed large @click="login"
+            >Login</v-btn
+          >
         </v-card-actions>
       </v-card>
       <v-snackbar :timeout="4000" v-model="snackbar" absolute bottom center>
@@ -47,6 +49,20 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    login() {
+      let that = this;
+      this.$fire.auth
+        .signInWithEmailAndPassword(this.auth.email, this.auth.password)
+        .catch(function (error) {
+          that.snackbarText = error.message;
+          that.snackbar = true;
+        })
+        .then((user) => {
+          //we are signed in
+          $nuxt.$router.push("/");
+        });
+    },
+  },
 };
 </script>

@@ -24,6 +24,10 @@ export default {
   plugins: [
   ],
 
+  router:{
+    middleware:['auth']
+  },
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -34,10 +38,35 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    // https://go.nuxtjs.dev/pwa
+    
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyAIMQ1iPQ8Di-jARxaX2qc7r26dTxfzQPA",
+          authDomain: "trelloclone-a821a.firebaseapp.com",
+          projectId: "trelloclone-a821a",
+          storageBucket: "trelloclone-a821a.appspot.com",
+          messagingSenderId: "957689231592",
+          appId: "1:957689231592:web:1db48403f8e3810a7ff15d"
+        },
+        services: {
+          auth: {
+            persistence: 'local', // default
+            initialize: {
+              onAuthStateChangedAction: 'onAuthStateChangedAction',
+              subscribeManually: false
+            },
+            ssr: false,
+          },
+          firestore: true,
+          storage: true
+        }
+      }
+    ]
   ],
+
   styleResources: {
     scss: ['./assets/scss/*.scss']
   },
